@@ -1,9 +1,12 @@
 package com.example.drivex_be.Controller;
 
+import com.example.drivex_be.model.RidePayment;
 import com.example.drivex_be.service.RideService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/rides")
@@ -18,12 +21,13 @@ public class RideController {
         return ResponseEntity.ok("Ride request accepted — Trigger sẽ tự tạo chuyến đi trong bảng rides");
     }
 
-    @PostMapping("/pay")
-    public ResponseEntity<String> completeRide(
+
+    @PostMapping("/add")
+    public ResponseEntity<RidePayment> addPayment(
             @RequestParam Integer rideId,
-            @RequestParam Double cost
-    ) {
-        rideService.completeRide(rideId, cost);
-        return ResponseEntity.ok("Payment done — Trigger sẽ tự cập nhật rides thành 'completed'");
+            @RequestParam Integer paymentId,
+            @RequestParam BigDecimal cost) {
+        RidePayment payment = rideService.addPayment(rideId, paymentId, cost);
+        return ResponseEntity.ok(payment);
     }
 }
