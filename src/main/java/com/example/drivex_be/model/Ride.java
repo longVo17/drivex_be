@@ -42,7 +42,8 @@ public class Ride {
     @Column(name = "status", length = 20, columnDefinition = "VARCHAR(20) DEFAULT 'ongoing' CHECK (status IN ('ongoing', 'completed', 'cancelled'))")
     private String status;
 
-    @OneToOne
-    @JoinColumn(name = "feedbackId")
+
+    // Feedback là quan hệ 1-1, nhưng khóa ngoại nằm ở bảng feedback
+    @OneToOne(mappedBy = "ride", cascade = CascadeType.ALL)
     private Feedback feedback;
 }

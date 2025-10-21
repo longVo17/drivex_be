@@ -40,7 +40,7 @@ public class DashboardController {
     }
 
 
-    @GetMapping("/monthly-driver-rankings")
+    @GetMapping("/yearly-driver-rankings")
     public ResponseEntity<List<MonthlyDriverRanking>> getMonthlyDriverRankings() {
         List<MonthlyDriverRanking> rankings = dashboardService.getMonthlyDriverRankings();
         return ResponseEntity.ok(rankings);

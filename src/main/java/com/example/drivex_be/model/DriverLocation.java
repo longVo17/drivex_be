@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class DriverLocation {
     @Id
     @Column(name = "driver_id")
-    private Long driverId;
+    private Integer driverId;
 
     @Column(name = "latitude", nullable = false)
     private Double latitude;

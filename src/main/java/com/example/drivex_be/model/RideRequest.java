@@ -22,6 +22,7 @@ public class RideRequest {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+
     @Column(name = "pickup_location", length = 255)
     private String pickupLocation;
 

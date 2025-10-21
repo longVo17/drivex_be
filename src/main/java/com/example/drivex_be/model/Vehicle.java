@@ -22,6 +22,9 @@ public class Vehicle {
     @Column(name = "vehicleName", length = 100)
     private String vehicleName;
 
+    @Column(name = "vehicleNumber", unique = true, nullable = false, length = 20)
+    private String vehicleNumber;
+
     @ManyToOne
     @JoinColumn(name = "driverId", nullable = false)
     private Driver driver;

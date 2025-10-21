@@ -13,8 +13,11 @@ import lombok.NoArgsConstructor;
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "feedbackId")
     private Integer feedbackId;
+
+    @OneToOne
+    @JoinColumn(name = "rideId", unique = true)
+    private Ride ride;
 
     @ManyToOne
     @JoinColumn(name = "driverId", nullable = false)
@@ -24,8 +27,6 @@ public class Feedback {
     @JoinColumn(name = "customerId", nullable = false)
     private Customer customer;
 
-    @OneToOne(mappedBy = "feedback")
-    private Ride ride;
 
     @Column(name = "review", columnDefinition = "TEXT")
     private String review;

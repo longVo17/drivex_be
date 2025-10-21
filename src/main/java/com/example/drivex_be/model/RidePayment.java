@@ -31,6 +31,7 @@ public class RidePayment {
     private LocalDateTime payTime;
 
     @Column(name = "cost", columnDefinition = "NUMERIC(10,2)")
-    private BigDecimal cost; // Thay Double bằng BigDecimal
+    private BigDecimal cost;
 }
+
 

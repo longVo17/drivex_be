@@ -27,9 +27,8 @@ public class Customer {
     @Column(name = "email", length = 100)
     private String email;
 
-    @Column(name = "promotionId")
-    private Integer promotionId;
-
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Promotion> promotions;
+
+
 }

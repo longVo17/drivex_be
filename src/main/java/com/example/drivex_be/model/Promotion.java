@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -15,7 +16,6 @@ import java.time.LocalDate;
 public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "promotionId")
     private Integer promotionId;
 
     @ManyToOne
@@ -28,9 +28,12 @@ public class Promotion {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name = "amount", precision = 10, scale = 2)
+    private BigDecimal amount;
 
-    @Column(name = "attribute1", length = 100)
-    private String attribute1;
+    @Column(name = "discount_percent", precision = 5, scale = 2)
+    private BigDecimal discountPercent;
+
+    @Column(name = "description", length = 255)
+    private String description;
 }
